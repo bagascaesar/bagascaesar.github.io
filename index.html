@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bagas Caesar Suherlan · Mathematics, Khalifa University</title>
+<meta name="description" content="Bagas Caesar Suherlan, PhD student in Mathematics at Khalifa University: spatial statistics, functional data analysis and stochastic processes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fbf9f4; --paper-2:#f3efe5; --ink:#1c1b19; --ink-2:#3b3934; --muted:#77736a; --rule:#dcd5c6;
+  --accent:#23408e; --accent-soft:#e6eaf5; --ochre:#b5762a;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.62;-webkit-font-smoothing:antialiased;font-optical-sizing:auto}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(35,64,142,.3)}
+a:hover{border-bottom-color:var(--accent)}
+::selection{background:#d9e0f2}
+
+.layout{display:grid;grid-template-columns:320px 1fr;max-width:1240px;margin:0 auto;min-height:100vh}
+
+/* Sidebar */
+aside{position:sticky;top:0;height:100vh;padding:56px 36px 40px 40px;border-right:1px solid var(--rule);display:flex;flex-direction:column}
+.name{font-size:34px;line-height:1.08;font-weight:500;letter-spacing:-.01em}
+.role{margin-top:14px;color:var(--ink-2);font-size:17px;line-height:1.45}
+.role i{color:var(--muted)}
+.toc{margin-top:44px;list-style:none;font-family:var(--mono);font-size:13.5px}
+.toc li{border-top:1px solid var(--rule)}
+.toc li:last-child{border-bottom:1px solid var(--rule)}
+.toc a{display:flex;gap:14px;padding:11px 0;color:var(--ink-2);border:0}
+.toc a span{color:var(--muted);width:22px}
+.toc a:hover,.toc a.on{color:var(--accent)}
+.toc a.on span{color:var(--accent)}
+.side-links{margin-top:auto;font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.side-links a{color:var(--ink-2);border:0;display:inline-flex;align-items:center;gap:8px}
+.side-links a:hover{color:var(--accent)}
+.side-links svg{width:15px;height:15px}
+
+/* Main */
+main{padding:56px 64px 0 72px;max-width:860px}
+.lede{font-size:30px;line-height:1.32;font-weight:400;letter-spacing:-.005em;color:var(--ink)}
+.lede em{color:var(--accent);font-style:italic}
+
+section{padding-top:88px}
+.sec-head{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--ink);padding-bottom:12px;margin-bottom:30px}
+.sec-head .n{font-family:var(--mono);font-size:14px;color:var(--accent)}
+.sec-head h2{font-size:30px;font-weight:500;letter-spacing:-.005em}
+p+p{margin-top:16px}
+
+dl.meta{display:grid;grid-template-columns:150px 1fr;margin-top:30px;border-top:1px solid var(--rule)}
+dl.meta dt,dl.meta dd{padding:12px 0;border-bottom:1px solid var(--rule)}
+dl.meta dt{font-family:var(--mono);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-top:15px}
+dl.meta dd{font-size:18px}
+dl.meta dd small{color:var(--muted);font-size:16px}
+
+.topics{counter-reset:t}
+.topic{display:grid;grid-template-columns:64px 1fr;gap:6px 0;padding:26px 0;border-bottom:1px solid var(--rule)}
+.topic:first-child{padding-top:4px}
+.topic::before{counter-increment:t;content:"2." counter(t);font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:8px}
+.topic h3{font-size:23px;font-weight:500;line-height:1.3}
+.topic p{grid-column:2;color:var(--ink-2)}
+.kw{grid-column:2;margin-top:10px;font-family:var(--mono);font-size:12.5px;color:var(--ochre)}
+.kw span+span::before{content:" · ";color:var(--muted)}
+
+.note{background:var(--paper-2);border-left:3px solid var(--accent);padding:20px 24px;color:var(--ink-2)}
+.note .label{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);display:block;margin-bottom:6px}
+
+ol.pubs{list-style:none}
+ol.pubs li{padding:18px 0;border-bottom:1px solid var(--rule)}
+ol.pubs .t{font-weight:500}
+ol.pubs .v{font-style:italic;color:var(--ink-2)}
+ol.pubs .x{font-family:var(--mono);font-size:12.5px;margin-top:6px;display:flex;gap:14px}
+
+.repo-list{list-style:none;border-top:1px solid var(--rule)}
+.repo-list li{display:grid;grid-template-columns:1fr auto;gap:4px 24px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.repo-list code{font-family:var(--mono);font-size:15px;color:var(--ink)}
+.repo-list p{grid-column:1;color:var(--ink-2);font-size:17px}
+.repo-list .go{grid-row:1/3;grid-column:2;align-self:center;font-family:var(--mono);font-size:13px}
+
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:28px;border-top:1px solid var(--rule)}
+.principles div{padding:18px 18px 0 0}
+.principles b{font-family:var(--mono);font-weight:500;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:6px}
+.principles span{font-size:17px;color:var(--ink-2);line-height:1.5;display:block}
+
+footer{margin-top:110px;padding:28px 0 48px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--rule);padding:36px 16px 24px}
+  .toc{margin-top:26px;display:flex;flex-wrap:wrap;gap:2px 28px}
+  .toc a{gap:8px}
+  .toc li,.toc li:last-child{border:0}
+  .toc a{padding:6px 0}
+  .side-links{margin-top:20px;flex-direction:row;flex-wrap:wrap;gap:16px}
+  main{padding:36px 16px 0}
+  .lede{font-size:24px}
+  figcaption{flex-direction:column}
+  dl.meta{grid-template-columns:1fr}
+  dl.meta dt{border-bottom:0;padding-bottom:0}
+  .topic{grid-template-columns:1fr}
+  .topic::before{padding-top:0}
+  .topic p,.kw{grid-column:1}
+  .principles{grid-template-columns:1fr}
+  section{padding-top:64px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+
+
+/* Hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;background:#0f1730;color:#fff;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg .topo{width:100%;height:100%;display:block}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,18,38,.92) 0%,rgba(12,18,38,.72) 42%,rgba(12,18,38,.15) 100%),linear-gradient(0deg,rgba(12,18,38,.6),rgba(12,18,38,0) 40%)}
+.hero-in{position:relative;z-index:2;max-width:1240px;width:100%;margin:0 auto;padding:0 40px 14vh}
+.h-eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#e0a54c}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(46px,7.4vw,96px);line-height:1;letter-spacing:-.02em;margin:22px 0 18px;max-width:900px}
+.h-role{font-family:var(--serif);font-style:italic;font-size:clamp(18px,1.6vw,22px);color:#c3cbe0}
+.h-lede{max-width:640px;margin-top:26px;font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:#e4e8f2}
+.h-lede em{color:#f0c27a}
+.h-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hb{font-family:var(--mono);font-size:14px;letter-spacing:.03em;padding:12px 22px;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:2px}
+.hb:hover{background:rgba(255,255,255,.08);border-color:#fff;color:#fff}
+.hb.primary{background:#e0a54c;border-color:#e0a54c;color:#161208}
+.hb.primary:hover{background:#cf9234;color:#161208}
+.h-down{position:absolute;z-index:2;right:40px;bottom:36px;display:flex;flex-direction:column;align-items:center;gap:6px;color:#aeb7cf;border:0;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.h-down svg{width:20px;height:20px;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+.layout aside .name{font-size:26px}
+@media (max-width:980px){.hero-in{padding:0 16px 12vh}.h-down{right:16px;bottom:20px}}
+@media (prefers-reduced-motion:reduce){.h-down svg{animation:none}}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="hero-bg"><svg class="topo" id="topo" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg></div>
+  <div class="hero-in">
+    <div class="h-eyebrow">Spatial statistics · Time series · Functional data · Stochastic processes</div>
+    <h1>Bagas Caesar Suherlan</h1>
+    <p class="h-role">PhD student in Mathematics, Khalifa University of Science and Technology</p>
+    <p class="h-lede">I work on <em>statistical models</em> for data that evolve over space and time, from the theory of stochastic processes to methods for curves and time series.</p>
+    <div class="h-btns"><a class="hb primary" href="#research">Research</a><a class="hb" href="https://github.com/bagascaesar">GitHub</a></div>
+  </div>
+  <a class="h-down" href="#about" aria-label="Scroll to content"><span>scroll</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+</header>
+<div class="layout">
+  <aside>
+    <div class="name">Bagas Caesar<br>Suherlan</div>
+    <p class="role">PhD student in Mathematics<br><i>Khalifa University of Science and Technology, Abu Dhabi</i></p>
+    <ol class="toc" aria-label="Sections">
+      <li><a href="#about"><span>1</span>About</a></li>
+      <li><a href="#research"><span>2</span>Research</a></li>
+      <li><a href="#publications"><span>3</span>Publications</a></li>
+      <li><a href="#code"><span>4</span>Code &amp; data</a></li>
+    </ol>
+    <div class="side-links">
+      <a href="https://github.com/bagascaesar"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>github.com/bagascaesar</a>
+    </div>
+  </aside>
+
+  <main>
+
+    <section id="about">
+      <div class="sec-head"><span class="n">§1</span><h2>About</h2></div>
+      <p>I am a PhD student in Mathematics at the College of Computing and Mathematical Sciences, Khalifa University of Science and Technology. My research lies at the interface of spatial statistics, time series, functional data analysis and stochastic processes.</p>
+      <p>I am interested in methods that are both mathematically principled and useful for real data, particularly in environmental, economic and health applications. I came to mathematics from a background in actuarial science.</p>
+      <dl class="meta">
+        <dt>Position</dt><dd>PhD student, Department of Mathematics</dd>
+        <dt>Institution</dt><dd>Khalifa University of Science and Technology, Abu Dhabi</dd>
+        <dt>Supervision</dt><dd>Prof. Emilio Porcu <small>(principal)</small><br>Prof. Antonello Maruotti · Dr. Diana Francis</dd>
+        <dt>Background</dt><dd>Actuarial science</dd>
+      </dl>
+    </section>
+
+    <section id="research">
+      <div class="sec-head"><span class="n">§2</span><h2>Research</h2></div>
+      <div class="topics">
+        <div class="topic"><h3>Stochastic processes and space–time models</h3><p>Probabilistic models for random phenomena evolving over space and time, from random fields and spatio-temporal models to time series and Markov or latent-state structures, together with their estimation, inference and prediction.</p><div class="kw"><span>random fields</span><span>time series</span><span>Markov and latent-state models</span><span>prediction</span></div></div>
+        <div class="topic"><h3>Functional data analysis</h3><p>Methods for data observed as curves, surfaces or other functions, including representation, dimension reduction and clustering.</p><div class="kw"><span>smoothing</span><span>dimension reduction</span><span>clustering</span></div></div>
+        <div class="topic"><h3>Applications in environment, economics and health</h3><p>Statistical analysis of environmental, economic and health data, where dependence across space, time and individuals shapes both the questions and the methods.</p><div class="kw"><span>environment</span><span>economics</span><span>health</span></div></div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="sec-head"><span class="n">§3</span><h2>Publications</h2></div>
+      <div id="pub-root"></div>
+    </section>
+
+    <section id="code">
+      <div class="sec-head"><span class="n">§4</span><h2>Code &amp; data</h2></div>
+      <p>Each article will be accompanied by a repository from which its tables and figures can be regenerated.</p>
+      <div class="principles">
+        <div><b>Data</b><span>Processed panels released under open licences, with sources, editions and download dates recorded.</span></div>
+        <div><b>Code</b><span>Analysis scripts run end to end, with pinned package versions.</span></div>
+        <div><b>Randomness</b><span>Fixed seeds for every initialisation, stored with the fitted models.</span></div>
+      </div>
+      <ul class="repo-list" style="margin-top:34px">
+        <li><code>bagascaesar</code><p>Profile overview: research lines and reproducibility repositories.</p><a class="go" href="https://github.com/bagascaesar">GitHub →</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <span>© <span id="yr"></span> Bagas Caesar Suherlan</span>
+      <span>Set in Newsreader and IBM Plex Mono · <a href="#top">top ↑</a></span>
+    </footer>
+  </main>
+</div>
+
+<script>
+/* ---------- Publications ----------
+   Add entries when submitted or accepted.
+   {title:"...", authors:"B. C. Suherlan, ...", venue:"Journal 12, 1–20", year:"2027", status:"Published"|"Under review", doi:"10.xxxx/...", code:"https://github.com/bagascaesar/..."} */
+const PUBS = [];
+(function(){
+  const root=document.getElementById("pub-root");
+  if(!PUBS.length){
+    root.innerHTML='<div class="note"><span class="label">Forthcoming</span>Articles will be listed here as they are published, each linked to its code and data.</div>';
+    return;
+  }
+  root.innerHTML='<ol class="pubs">'+PUBS.map(p=>`<li><div class="t">${p.title}</div><div>${p.authors}</div><div class="v">${p.venue}${p.year?", "+p.year:""}${p.status&&p.status!=="Published"?" · "+p.status:""}</div><div class="x">${p.doi?`<a href="https://doi.org/${p.doi}">doi</a>`:""}${p.code?`<a href="${p.code}">code &amp; data</a>`:""}</div></li>`).join("")+'</ol>';
+})();
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+/* ---------- Active section in sidebar ---------- */
+(function(){
+  const links=[...document.querySelectorAll(".toc a")];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id))}}),{rootMargin:"-40% 0px -55% 0px"});
+  document.querySelectorAll("main section").forEach(s=>io.observe(s));
+})();
+
+
+
+
+/* ---------- Hero background: contour lines of a smooth random surface (marching squares) ---------- */
+(function(){
+  const svg=document.getElementById("topo");if(!svg)return;
+  function rng(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function draw(){
+    const W=1200,H=Math.round(W*Math.max(.55,Math.min(2.2,innerHeight/innerWidth)));
+    svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+    const r=rng(5),B=[...Array(9)].map(()=>[r()*W,r()*H,(r()*2-1)*1.2,120+r()*200]);
+    const f=(x,y)=>{let v=0;for(const[bx,by,a,s]of B)v+=a*Math.exp(-((x-bx)**2+(y-by)**2)/(2*s*s));return v+.15*Math.sin(x/90)*Math.cos(y/70)};
+    const st=10,nx=Math.floor(W/st)+1,ny=Math.floor(H/st)+1,G=[];let lo=1e9,hi=-1e9;
+    for(let j=0;j<ny;j++){const row=[];for(let i=0;i<nx;i++){const v=f(i*st,j*st);row.push(v);lo=Math.min(lo,v);hi=Math.max(hi,v)}G.push(row)}
+    const col=t=>{const a=[70,110,190],m=[170,180,200],b=[222,160,70];const[c0,c1,u]=t<.5?[a,m,t/.5]:[m,b,(t-.5)/.5];return`rgb(${c0.map((c,k)=>Math.round(c+(c1[k]-c)*u)).join(",")})`};
+    const L=34;let out="";
+    for(let li=1;li<L;li++){
+      const l=lo+(hi-lo)*li/L;let d="";
+      for(let j=0;j<ny-1;j++)for(let i=0;i<nx-1;i++){
+        const P=[[i*st,j*st],[(i+1)*st,j*st],[(i+1)*st,(j+1)*st],[i*st,(j+1)*st]],V=[G[j][i],G[j][i+1],G[j+1][i+1],G[j+1][i]],E=[];
+        for(let k=0;k<4;k++){const k2=(k+1)%4;if((V[k]>l)!==(V[k2]>l)){const t=(l-V[k])/(V[k2]-V[k]);E.push([P[k][0]+t*(P[k2][0]-P[k][0]),P[k][1]+t*(P[k2][1]-P[k][1])])}}
+        for(let m=0;m+1<E.length;m+=2)d+=`M${E[m][0].toFixed(1)} ${E[m][1].toFixed(1)}L${E[m+1][0].toFixed(1)} ${E[m+1][1].toFixed(1)}`;
+      }
+      const major=li%5===0;
+      out+=`<path d="${d}" stroke="${col(li/L)}" stroke-width="${major?1.6:.7}" opacity="${major?.95:.55}" fill="none" stroke-linecap="round"/>`;
+    }
+    svg.innerHTML=`<rect width="${W}" height="${H}" fill="#121b38"/>`+out;
+  }
+  draw();let tm;addEventListener("resize",()=>{clearTimeout(tm);tm=setTimeout(draw,250)});
+})();
+</script>
+</body>
+</html>
